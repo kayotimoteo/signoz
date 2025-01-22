@@ -313,36 +313,6 @@ services:
         target: /var/lib/signoz
         bind:
           create_host_path: true
-  zookeeper-1:
-    container_name: signoz-zookeeper-1
-    environment:
-      ALLOW_ANONYMOUS_LOGIN: "yes"
-      ZOO_AUTOPURGE_INTERVAL: "1"
-      ZOO_SERVER_ID: "1"
-    hostname: zookeeper-1
-    image: bitnami/zookeeper:3.7.1
-    networks:
-      default: null
-    ports:
-      - mode: ingress
-        target: 2181
-        published: "2181"
-        protocol: tcp
-      - mode: ingress
-        target: 2888
-        published: "2888"
-        protocol: tcp
-      - mode: ingress
-        target: 3888
-        published: "3888"
-        protocol: tcp
-    user: root
-    volumes:
-      - type: bind
-        source: /home/kayo/signoz/deploy/docker/clickhouse-setup/data/zookeeper-1
-        target: /bitnami/zookeeper
-        bind:
-          create_host_path: true
 networks:
   default:
     name: clickhouse-setup_default
