@@ -21,10 +21,6 @@ services:
           create_host_path: true
   clickhouse:
     container_name: signoz-clickhouse
-    depends_on:
-      zookeeper-1:
-        condition: service_started
-        required: true
     hostname: clickhouse
     healthcheck:
       test:
@@ -313,6 +309,7 @@ services:
         target: /var/lib/signoz
         bind:
           create_host_path: true
+
 networks:
   default:
     name: clickhouse-setup_default
